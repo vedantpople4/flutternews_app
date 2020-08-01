@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -14,7 +13,7 @@ class ArticleView extends StatefulWidget {
 }
 
 class _ArticleViewState extends State<ArticleView> {
-  final Complete<WebViewController> _controller =
+  final Completer<WebViewController> _controller =
       Completer<WebViewController>();
   @override
   Widget build(BuildContext context) {
@@ -45,6 +44,12 @@ class _ArticleViewState extends State<ArticleView> {
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
+        child: WebView(
+          initialUrl: widget.postUrl,
+          onWebViewCreated: (WebViewController webViewController) {
+            _controller.complete(webViewController);
+          },
+        ),
       ),
     );
   }
