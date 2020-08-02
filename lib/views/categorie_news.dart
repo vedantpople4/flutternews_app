@@ -35,7 +35,26 @@ class _CategoryNewsState extends State<CategoryNews> {
       appBar: AppBar(
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              "Flutter",
+              style:
+                  TextStyle(color: Colors.black87, fontWeight: FontWeight.w600),
+            ),
+            Text(
+              "News",
+              style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w600),
+            )
+          ],
         ),
+        actions: <Widget>[
+          Opacity(
+            opacity: 0,
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 16),
+            ),
+          )
+        ],
       ),
     );
   }
