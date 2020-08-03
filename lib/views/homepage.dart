@@ -13,4 +13,37 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   bool _loading;
   var newslist;
+
+  List<CategorieModel> categories = List<CategorieModel>();
+
+  void getNews() async {
+    News news = News();
+    await news.getNews();
+    setState(() {
+      _loading = false;
+    });
+  }
+
+  @override 
+  Widget build(BuildContext context){
+    return Scaffold(
+      appBar: MyAppBar(),
+      body: SafeArea(
+        child: _loading
+        ? Center(child: CircularProgressIndicator(),) :
+        SingleChildScrollView(
+          child: Container(
+            child: Column(
+              children: <Widget>[
+                Container(
+                  padding : EdgeInsets.symmetric(horizontal : 16),
+                  height: 70,
+                )
+                
+              ],),
+          ),
+        )
+        ),)
+  }
+
 }
