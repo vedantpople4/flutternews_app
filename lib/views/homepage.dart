@@ -24,26 +24,53 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  @override 
-  Widget build(BuildContext context){
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppBar(),
       body: SafeArea(
-        child: _loading
-        ? Center(child: CircularProgressIndicator(),) :
-        SingleChildScrollView(
-          child: Container(
-            child: Column(
-              children: <Widget>[
-                Container(
-                  padding : EdgeInsets.symmetric(horizontal : 16),
-                  height: 70,
+          child: _loading
+              ? Center(
+                  child: CircularProgressIndicator(),
                 )
-                
-              ],),
-          ),
-        )
-        ),)
+              : SingleChildScrollView(
+                  child: Container(
+                    child: Column(
+                      children: <Widget>[
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 16),
+                          height: 70,
+                          child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: categories.length,
+                              itemBuilder: (context, index) {
+                                return CategoryCard(
+                                  imageAssetUrl:
+                                      categories[index].imageAssetUrl,
+                                  categoryName: categories[index].categorieName,
+                                );
+                              }),
+                        ),
+                        Container(
+                          margin: EdgeInsets.only(top: 16),
+                          child: ListView.builder(
+                              itemCount: newslist.length,
+                              shrinkWrap: true,
+                              physics: ClampingScrollPhysics(),
+                              itemBuilder: (context, index) {
+                                return NewsTile(
+                                  imgUrl: newslist[index].urlToImage ?? "",
+                                  title: newslist[index].title ?? "",
+                                  desc: newslist[index].description ?? "",
+                                  content: newslist[index].content ?? "",
+                                  posturl: newslist[index].articlUrl ?? "",
+                                );
+                              }),
+                        )
+                      ],
+                    ),
+                  ),
+                )),
+    );
   }
-
 }
