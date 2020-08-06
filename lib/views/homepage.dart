@@ -90,7 +90,23 @@ class Categorycard extends StatelessWidget {
                       newsCategory: categoryName.toLowerCase(),
                     )));
       },
-      child: Container(),
+      child: Container(
+        margin: EdgeInsets.only(right: 14),
+        child: Stack(
+          children: <Widget>[
+            ClipRRect(
+              borderRadius: BorderRadius.circular(5),
+              child: CachedNetworkImage(
+                imageUrl: imageAssetUrl,
+                height: 60,
+                width: 120,
+                fit: BoxFit.cover,
+              ),
+            ),
+            Container()
+          ],
+        ),
+      ),
     );
   }
 }
