@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutternews_app/helper/data.dart';
-import 'package:flutternews_app/helper/widgets.dart';
-import 'package:flutternews_app/models/categorie_model.dart';
-import 'package:flutternews_app/views/categorie_news.dart';
+//import 'package:news_app/helper/data.dart';
+import 'package:news_app/helper/widgets.dart';
+import 'package:news_app/models/categorie_model.dart';
+import 'package:news_app/views/categorie_news.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -103,7 +103,22 @@ class Categorycard extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            Container()
+            Container(
+              alignment: Alignment.center,
+              height: 60,
+              width: 120,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  color: Colors.black26),
+              child: Text(
+                categoryName,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500),
+              ),
+            )
           ],
         ),
       ),
