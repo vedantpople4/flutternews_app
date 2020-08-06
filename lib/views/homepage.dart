@@ -74,3 +74,13 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+class Categorycard extends StatelessWidget {
+  final String imageAssetUrl, categoryName;
+
+  CategoryCard({this.imageAssetUrl, this.categoryName});
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(onTap: () {});
+  }
+}
