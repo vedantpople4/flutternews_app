@@ -81,6 +81,16 @@ class Categorycard extends StatelessWidget {
   CategoryCard({this.imageAssetUrl, this.categoryName});
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(onTap: () {});
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => CategoryNews(
+                      newsCategory: categoryName.toLowerCase(),
+                    )));
+      },
+      child: Container(),
+    );
   }
 }
